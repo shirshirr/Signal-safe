@@ -1,0 +1,17 @@
+GOLDMAN SACHS
+
+A successful candidate will possess the following attributes:
+
+A Bachelor's or Master's degree in Computer Science, Computer Engineering, or a similar field of study.
+Expertise in java, as well as proficiency with databases and data manipulation.
+Experience in end-to-end solutions, automated testing and SDLC concepts.
+The ability (and tenacity) to clearly express ideas and arguments in meetings and on paper.​
+Experience in the some of following is desired and can set you apart from other candidates : 
+
+developing in large-scale systems, such as MapReduce on Hadoop/Hbase,
+data analysis using tools such as SQL, Spark SQL, Zeppelin/Jupyter,
+API design, such as to create interconnected services, 
+knowledge of the financial industry and compliance or risk functions,
+ability to influence stakeholders.
+
+https://higher.gs.com/roles/151275

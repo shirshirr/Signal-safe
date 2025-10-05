@@ -1,0 +1,15 @@
+numpy
+pandas
+requests
+python-dotenv
+openai
+sentence-transformers
+torch
+transformers
+scikit-learn
+pinecone-client
+flask
+fastapi
+uvicorn
+shap # OPTIONAL: install only if you want explainability
+

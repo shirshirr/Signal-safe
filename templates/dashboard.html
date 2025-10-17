@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ company }} Dashboard - VC Senda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ company }} Dashboard</h1>
+        <a class="back-home" href="{{ url_for('home') }}">← Back to Home</a>
+    </header>
+
+    <section class="signals-section">
+        <h2>Stock Signals</h2>
+        <div class="cards-container">
+            {% for s in signals %}
+            <div class="card">
+                <p><strong>Signal:</strong> {{ s.signal }}</p>
+                <p><strong>Sentiment Score:</strong> {{ s.sentiment }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2>Latest News</h2>
+        <div class="cards-container">
+            {% for n in news %}
+            <div class="card news-card">
+                <p>{{ n.title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

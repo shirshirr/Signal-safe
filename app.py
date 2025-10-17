@@ -1,30 +1,30 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import pandas as pd
 
 app = Flask(__name__)
 
-# Helper functions to read CSVs
-def get_news():
-    try:
-        news_df = pd.read_csv("multi_stock_news.csv")
-        # latest 5 news per ticker
-        news_df = news_df.groupby("ticker").head(5)
-        return news_df.to_dict(orient="records")
-    except:
-        return []
-
-def get_signals():
-    try:
-        signals_df = pd.read_csv("stock_signals.csv")
-        return signals_df.to_dict(orient="records")
-    except:
-        return []
-
-@app.route('/')
+@app.route("/", methods=["GET", "POST"])
 def home():
-    news = get_news()
-    signals = get_signals()
-    return render_template('index.html', news=news, signals=signals)
+    signals_df = pd.read_csv("stock_signals.csv")
+    companies = signals_df['ticker'].unique()  # use 'ticker' column
+    return render_template("index.html", companies=companies)
+
+@app.route("/dashboard")
+def dashboard():
+    selected_company = request.args.get("company")
+    signals_df = pd.read_csv("stock_signals.csv")
+    news_df = pd.read_csv("multi_stock_news.csv")  # if you have news
+    
+    # Filter data for selected company
+    company_signals = signals_df[signals_df['ticker'] == selected_company].to_dict(orient="records")
+    company_news = news_df[news_df['ticker'] == selected_company].to_dict(orient="records")
+    
+    return render_template(
+        "dashboard.html",
+        company=selected_company,
+        signals=company_signals,
+        news=company_news
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
